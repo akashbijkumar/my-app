@@ -440,9 +440,9 @@ ol {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 30% 20%, rgba(46, 161, 105, 0.15), transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba(214, 125, 59, 0.12), transparent 55%),
-    linear-gradient(180deg, rgba(6, 30, 17, 0.5) 0%, rgba(13, 32, 38, 0.4) 40%, rgba(8, 42, 30, 0.65) 100%);
+    radial-gradient(ellipse at 30% 20%, rgba(46, 161, 105, 0.12), transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(214, 125, 59, 0.1), transparent 60%),
+    linear-gradient(180deg, rgba(6, 30, 17, 0.65) 0%, rgba(13, 32, 38, 0.55) 40%, rgba(8, 42, 30, 0.75) 100%);
 }
 
 .hero .container {
@@ -460,7 +460,7 @@ ol {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -484,7 +484,7 @@ ol {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
 
 .hero-badge::before {
@@ -521,15 +521,15 @@ ol {
   letter-spacing: -0.03em;
   color: var(--white);
   text-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.3),
-    0 8px 24px rgba(0, 0, 0, 0.4),
-    0 16px 48px rgba(6, 30, 17, 0.6);
-  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 16px 48px rgba(6, 30, 17, 0.7);
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
   background: linear-gradient(180deg, #ffffff 0%, #e8f5f0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
 
 .hero-subtitle {
@@ -537,10 +537,10 @@ ol {
   max-width: 650px;
   font-size: clamp(1.1rem, 1.2vw + 0.5rem, 1.35rem);
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.6);
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
   letter-spacing: 0.01em;
 }
 
@@ -549,7 +549,7 @@ ol {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.2rem;
-  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
 }
 
 .hero-actions .btn {
@@ -1265,16 +1265,52 @@ ol {
   }
 
   .hero {
-    padding-top: calc(var(--header-h) + 1.5rem);
-    padding-bottom: 3rem;
+    padding-top: calc(var(--header-h) + 2rem);
+    padding-bottom: 2rem;
     min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .hero-bg {
+    background-position: 65% center;
+  }
+
+  .hero-overlay {
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(46, 161, 105, 0.1), transparent 50%),
+      linear-gradient(180deg, rgba(6, 30, 17, 0.7) 0%, rgba(13, 32, 38, 0.65) 30%, rgba(8, 42, 30, 0.85) 100%);
+  }
+
+  .hero-content {
+    padding: 0 0.5rem;
+  }
+
+  .hero-badge {
+    font-size: 0.7rem;
+    padding: 0.6rem 1.2rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: clamp(2rem, 10vw, 3.2rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
 
-  .hero-actions .btn,
+  .hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.15rem);
+    margin-bottom: 2.5rem;
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .hero-actions {
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
   .contact-actions .btn,
   .package-actions .btn,
   .nav-cta .btn {
