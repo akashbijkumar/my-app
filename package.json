@@ -1,0 +1,16 @@
+{
+  "name": "ubj-houseboats",
+  "version": "1.0.0",
+  "description": "UBJ Houseboats - Kerala Backwater Cruises in Alappuzha",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["houseboat", "kerala", "alappuzha", "backwaters", "tourism"],
+  "author": "UBJ Houseboats",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.x"
+  }
+}
