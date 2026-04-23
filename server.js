@@ -5,6 +5,24 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 const ROOT_DIR = __dirname;
 
+// Function to find available port
+function findAvailablePort(startPort) {
+  return new Promise((resolve, reject) => {
+    const testServer = http.createServer();
+    testServer.listen(startPort, () => {
+      const port = testServer.address().port;
+      testServer.close(() => resolve(port));
+    });
+    testServer.on('error', (err) => {
+      if (err.code === 'EADDRINUSE') {
+        resolve(findAvailablePort(startPort + 1));
+      } else {
+        reject(err);
+      }
+    });
+  });
+}
+
 const MIME_TYPES = {
   ".css": "text/css; charset=utf-8",
   ".html": "text/html; charset=utf-8",
@@ -76,9 +94,21 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log("===================================================");
-  console.log("UBJ Houseboats server is running.");
-  console.log(`Open http://localhost:${PORT}`);
-  console.log("===================================================");
-});
+// Start server with dynamic port finding
+(async () => {
+  try {
+    const availablePort = await findAvailablePort(PORT);
+    server.listen(availablePort, () => {
+      console.log("===================================================");
+      console.log("UBJ Houseboats server is running.");
+      console.log(`Open http://localhost:${availablePort}`);
+      if (availablePort !== PORT) {
+        console.log(`Note: Port ${PORT} was in use, using ${availablePort} instead`);
+      }
+      console.log("===================================================");
+    });
+  } catch (err) {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+  }
+})();
