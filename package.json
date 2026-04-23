@@ -5,9 +5,16 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "vercel-build": "echo \"No build step required for static site\""
   },
-  "keywords": ["houseboat", "kerala", "alappuzha", "backwaters", "tourism"],
+  "keywords": [
+    "houseboat",
+    "kerala",
+    "alappuzha",
+    "backwaters",
+    "tourism"
+  ],
   "author": "UBJ Houseboats",
   "license": "MIT",
   "engines": {
