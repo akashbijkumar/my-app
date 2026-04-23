@@ -405,7 +405,7 @@ ol {
 .hero {
   position: relative;
   min-height: 100svh;
-  padding: calc(var(--header-h) + 3rem) 0 4rem;
+  padding: calc(var(--header-h) + 2.5rem) 0 4rem;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -420,62 +420,144 @@ ol {
 
 .hero-bg {
   background:
-    linear-gradient(180deg, rgba(13, 32, 38, 0.1), rgba(13, 32, 38, 0.5)),
+    linear-gradient(180deg, rgba(13, 32, 38, 0.04), rgba(13, 32, 38, 0.46)),
     url("../assets/hero_bg_new.png") center center / cover no-repeat;
-  transform: scale(1.06);
+  transform: scale(1.03);
   will-change: transform;
 }
 
 .hero-overlay {
   background:
-    radial-gradient(circle at top left, rgba(46, 161, 105, 0.4), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(92, 145, 157, 0.35), transparent 45%),
-    linear-gradient(135deg, rgba(13, 32, 38, 0.7), rgba(21, 51, 61, 0.5));
+    radial-gradient(circle at 12% 18%, rgba(46, 161, 105, 0.3), transparent 30%),
+    radial-gradient(circle at 82% 24%, rgba(247, 241, 231, 0.12), transparent 24%),
+    radial-gradient(circle at 86% 78%, rgba(92, 145, 157, 0.26), transparent 32%),
+    linear-gradient(120deg, rgba(6, 30, 17, 0.84) 0%, rgba(8, 42, 30, 0.6) 40%, rgba(13, 32, 38, 0.3) 72%, rgba(13, 32, 38, 0.55) 100%);
 }
 
 .hero-layout {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 2rem;
+  gap: 1.5rem;
   width: 100%;
 }
 
 .hero-copy,
 .hero-card {
+  position: relative;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(11, 24, 18, 0.34);
-  backdrop-filter: blur(12px);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
+  background: linear-gradient(145deg, rgba(6, 25, 17, 0.58), rgba(8, 29, 22, 0.28));
+  backdrop-filter: blur(16px) saturate(130%);
+  border-radius: 2rem;
+  box-shadow: 0 30px 80px rgba(3, 18, 12, 0.28);
+}
+
+.hero-copy::before,
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 24%),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 26%);
+  pointer-events: none;
 }
 
 .hero-copy {
-  padding: 1.4rem;
+  padding: 1.5rem;
 }
 
 .hero-card {
+  display: grid;
+  gap: 1rem;
+  align-content: end;
   padding: 1.35rem;
 }
 
 .hero .eyebrow,
 .hero-subtitle,
 .hero-points,
+.hero-note,
 .hero-card-label,
 .hero-card-grid span,
+.hero-card-note,
 .hero-card-link {
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-topline,
+.hero-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.hero-topline {
+  margin-bottom: 1.1rem;
+}
+
+.hero-topline .eyebrow {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.3rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .hero-title {
-  font-size: clamp(2.8rem, 2rem + 3vw, 5.4rem);
+  max-width: 11ch;
+  font-size: clamp(3rem, 2.2rem + 3.5vw, 6rem);
   color: var(--white);
+  text-wrap: balance;
 }
 
 .hero-subtitle {
-  max-width: 60ch;
-  margin: 1rem 0 1.4rem;
-  font-size: clamp(1rem, 0.92rem + 0.45vw, 1.18rem);
+  max-width: 54ch;
+  margin: 1rem 0 1.35rem;
+  font-size: clamp(1.02rem, 0.96rem + 0.4vw, 1.16rem);
+}
+
+.hero-metrics {
+  margin-bottom: 1.5rem;
+}
+
+.hero-metric {
+  min-width: min(100%, 230px);
+  flex: 1 1 230px;
+  padding: 1rem 1rem 0.95rem;
+  border-radius: 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+}
+
+.hero-metric strong,
+.hero-card-grid strong,
+.hero-card-title {
+  display: block;
+  color: var(--white);
+}
+
+.hero-metric strong {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+.hero-metric span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.93rem;
 }
 
 .hero-actions,
@@ -491,7 +573,14 @@ ol {
 .hero-points {
   display: grid;
   gap: 0.55rem;
-  margin-top: 1.3rem;
+  margin-top: 1.15rem;
+}
+
+.hero-note {
+  margin: 1.25rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.96rem;
 }
 
 .hero-points li,
@@ -533,10 +622,41 @@ ol {
   margin: 1rem 0 1.3rem;
 }
 
+.hero-card-primary,
+.hero-card-secondary {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-card-primary {
+  padding: 1.35rem;
+  border-radius: 1.7rem;
+  background: linear-gradient(180deg, rgba(6, 30, 18, 0.32), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-card-secondary {
+  padding: 1.2rem 1.25rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, rgba(247, 241, 231, 0.16), rgba(92, 145, 157, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.2rem + 0.8vw, 2.15rem);
+  line-height: 1.06;
+}
+
 .hero-card-grid strong {
-  display: block;
   margin-bottom: 0.2rem;
-  color: var(--white);
+  font-size: 1rem;
+}
+
+.hero-card-note {
+  margin: 0.65rem 0 1rem;
+  font-size: 0.96rem;
 }
 
 .highlights {
@@ -1096,6 +1216,10 @@ ol {
     padding: 1.8rem;
   }
 
+  .hero-card {
+    padding: 1.6rem;
+  }
+
   .highlights-grid,
   .crew-grid,
   .packages-grid,
@@ -1166,6 +1290,24 @@ ol {
 
   .hero-layout {
     align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-copy {
+    padding: 2.1rem;
+  }
+
+  .hero-card {
+    max-width: 420px;
+    justify-self: end;
+  }
+
+  .hero-card-primary {
+    padding: 1.55rem;
+  }
+
+  .hero-card-secondary {
+    margin-left: 2rem;
   }
 
   .journey-step > div {
@@ -1187,13 +1329,41 @@ ol {
   }
 
   .hero {
-    padding-top: calc(var(--header-h) + 1.5rem);
+    padding-top: calc(var(--header-h) + 1.25rem);
     padding-bottom: 3rem;
     min-height: 100vh;
   }
 
   .hero-title {
-    font-size: clamp(2.2rem, 8vw, 3.2rem);
+    max-width: 12ch;
+    font-size: clamp(2.4rem, 8vw, 3.8rem);
+  }
+
+  .hero-copy,
+  .hero-card {
+    border-radius: 1.6rem;
+  }
+
+  .hero-copy {
+    padding: 1.35rem;
+  }
+
+  .hero-card {
+    padding: 1.1rem;
+  }
+
+  .hero-metric {
+    min-width: 100%;
+  }
+
+  .hero-card-primary,
+  .hero-card-secondary {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
+
+  .hero-card-secondary {
+    margin-left: 0;
   }
 
   .hero-actions .btn,
