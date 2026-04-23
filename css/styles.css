@@ -1211,13 +1211,8 @@ ol {
 }
 
 @media (min-width: 700px) {
-  .hero-copy,
-  .hero-card {
-    padding: 1.8rem;
-  }
-
-  .hero-card {
-    padding: 1.6rem;
+  .hero-features {
+    flex-wrap: nowrap;
   }
 
   .highlights-grid,
@@ -1281,33 +1276,10 @@ ol {
     font-size: 0.95rem;
   }
 
-  .hero-layout,
   .about-grid,
   .stay-grid,
   .location-grid {
     grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-  }
-
-  .hero-layout {
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .hero-copy {
-    padding: 2.1rem;
-  }
-
-  .hero-card {
-    max-width: 420px;
-    justify-self: end;
-  }
-
-  .hero-card-primary {
-    padding: 1.55rem;
-  }
-
-  .hero-card-secondary {
-    margin-left: 2rem;
   }
 
   .journey-step > div {
@@ -1329,41 +1301,22 @@ ol {
   }
 
   .hero {
-    padding-top: calc(var(--header-h) + 1.25rem);
+    padding-top: calc(var(--header-h) + 1.5rem);
     padding-bottom: 3rem;
     min-height: 100vh;
   }
 
   .hero-title {
-    max-width: 12ch;
-    font-size: clamp(2.4rem, 8vw, 3.8rem);
+    font-size: clamp(2rem, 8vw, 3rem);
   }
 
-  .hero-copy,
-  .hero-card {
-    border-radius: 1.6rem;
+  .hero-features {
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  .hero-copy {
-    padding: 1.35rem;
-  }
-
-  .hero-card {
-    padding: 1.1rem;
-  }
-
-  .hero-metric {
-    min-width: 100%;
-  }
-
-  .hero-card-primary,
-  .hero-card-secondary {
-    padding: 1rem;
-    border-radius: 1.2rem;
-  }
-
-  .hero-card-secondary {
-    margin-left: 0;
+  .hero-feature {
+    width: 100%;
   }
 
   .hero-actions .btn,
